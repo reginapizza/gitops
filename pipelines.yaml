@@ -24,6 +24,21 @@ environments:
       bindings:
       - github-push-binding
       template: app-ci-template
+- apps:
+  - name: app-bus
+    services:
+    - name: bus
+      source_url: http://github.com/reginapizza/bus.git
+      webhook:
+        secret:
+          name: webhook-secret-new-env-bus
+          namespace: cicd
+  name: new-env
+  pipelines:
+    integration:
+      bindings:
+      - github-push-binding
+      template: app-ci-template
 - name: stage
 gitops_url: https://github.com/reginapizza/gitops.git
 version: 1
